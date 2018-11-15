@@ -5,13 +5,16 @@ LIB = -lm
 .PHONY: all
 all: calculator
 
-calculator: src/calculator.o src/funciones.o 
+calculator: src/calculator.o src/operaciones.o src/menu.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LIB)
 
 calculator.o: src/calculator.c
 	$(CC) $(CFLAGS) -c $^
 
-funciones.o: src/funciones.c
+funciones.o: src/operaciones.c
+	$(CC) $(CFLAGS) -c $^
+
+menu.o: src/menu.c
 	$(CC) $(CFLAGS) -c $^
 
 .PHONY: clean

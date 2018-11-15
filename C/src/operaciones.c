@@ -1,12 +1,32 @@
-#include "funciones.h"
+/**
+ * operaciones.c
+ * @author Ricardo Serrano
+ * @author Alex Macas
+ */
 
-int decimalToBinary(int decimal){
+/**
+ *Includes 
+ */
+#include "operaciones.h"
+
+
+/**
+ * Metodo recursivo que convierte un numero decimal a binario
+ * @param decimal, el numero decimal a convertir
+ * @return el decimal convertido en binario
+ */ 
+long decimalToBinary(int decimal){
 	if(decimal < 2){
 		return decimal;
 	}
 	return ((decimal%2) + decimalToBinary(decimal/2)*10);
 }
 
+/**
+ * Metodo que convierte un numero binario en decimal
+ * @param binary, el numero binario a convertir
+ * @return decimal, un numero decimal
+ */
 int binaryToDecimal(long binary){
 	int decimal = 0; 
 	int remainder;
@@ -20,12 +40,16 @@ int binaryToDecimal(long binary){
     return decimal;
 }
 
-void decimalToHexadecimal(int n){    
+/**
+ * Metodo que convierte un numero decimal en hexadecimal
+ * @param decimal, el numero decimal a convertir
+ */
+void decimalToHexadecimal(int decimal){    
 	char* hexadecimal = malloc(sizeof(char*));
     int i = 0; 
-    while(n!=0){
+    while(decimal!=0){
         int temp  = 0; 
-        temp = n % 16; 
+        temp = decimal % 16; 
         if(temp < 10){ 
             hexadecimal[i] = temp + 48; 
         } 
@@ -33,7 +57,7 @@ void decimalToHexadecimal(int n){
             hexadecimal[i] = temp + 55; 
         } 
         i++;
-        n = n/16; 
+        decimal = decimal/16; 
     } 
       
     for(int j=i-1; j>=0; j--){
@@ -43,6 +67,11 @@ void decimalToHexadecimal(int n){
     free(hexadecimal);
 } 
 
+/**
+ * Metodo que convierte un numero hexadecimal en decimal
+ * @param hexadecimal, cadena que representa un numero hexadecimal
+ * @return decimal, un numero decimal 
+ */
 int hexadecimalToDecimal(char* hexadecimal){    
     int len = strlen(hexadecimal); 
     int base = 1;   

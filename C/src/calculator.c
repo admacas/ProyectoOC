@@ -1,17 +1,42 @@
-#include "funciones.h"
+/**
+ * calculator.c
+ * @author Ricardo Serrano
+ * @author Alex Macas
+ */
+
+/**
+ *Includes 
+ */
+#include "menu.h"
 
 int main(){
-
-	for (int i = 0; i < 11; ++i){
-		printf("El numero %d en binario es %d\n", i, decimalToBinary(i));
+	system("clear");
+	int option = 0;
+	
+	do{
+		showMenu();
+		scanf("%d",&option);
+		switch(option){
+			case 1:
+				opDecimalToBinary();
+				break;
+			case 2:
+				opBinaryToDecimal();
+				break;
+			case 3:
+				opDecimalToHexadecimal();
+				break;
+			case 4:
+				opHexadecimalToDecimal();
+				break;
+			case 5:
+				printf("Saliendo...\n");
+				break;
+			default:
+				printf("Opcion incorrecta!\n");
+		}
+		
 	}
-
-	long binarios[5] = {1010, 1011, 1000, 1111, 0000};
-	for (int i = 0; i < 5; ++i){
-		printf("El numero %ld en decimal es %d\n", binarios[i], binaryToDecimal(binarios[i]));
-	}
-
-	decimalToHexadecimal(260743947);
-	printf("%d\n",hexadecimalToDecimal("F8AA30B"));
+	while(option != 5);
 
 }
